@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skills : MonoBehaviour
+public class Skills : Window
 {
     
-    public void Close()
-    {
-        this.gameObject.SetActive(false);
-    }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Minsk : Region
+public class Stats : Window
 {
 
 }

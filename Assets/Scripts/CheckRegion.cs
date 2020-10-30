@@ -8,8 +8,6 @@ using DG.Tweening;
 public class CheckRegion : MonoBehaviour
 {
     [SerializeField] private Region _map;
-    [SerializeField] private RightMenu _rightMenu;
-    [SerializeField] private Canvas _regionStats;
 
     private Camera _camera;
     private Region _chekedRegion;
@@ -42,10 +40,6 @@ public class CheckRegion : MonoBehaviour
 
                         _chekedRegion = region;
                         _isCheckedAnyRegion = true;
-
-                        _rightMenu.Change(_isCheckedAnyRegion);
-
-                        _regionStats.gameObject.SetActive(true);
                     }
                 }
             }
@@ -58,8 +52,6 @@ public class CheckRegion : MonoBehaviour
 
             FocusOn(_map, 5f, 1f);
             _isCheckedAnyRegion = false;
-            _rightMenu.Change(_isCheckedAnyRegion);
-            _regionStats.gameObject.SetActive(false);
         }
     }
 
