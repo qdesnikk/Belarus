@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Region : MonoBehaviour
+public abstract class Region : MonoBehaviour
 {
-    [SerializeField] private int _population;
+    [SerializeField] private string _name;
     [SerializeField] private int _bkbPopulation;
     [SerializeField] private int _lukaPopulation;
+
+    private float _attack;
+    private float _defence;
+    private float _health;
+    private float _intellect;
 
     private SpriteRenderer _spriteRenderer;
     private Color _defaultColor;

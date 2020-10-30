@@ -9,6 +9,7 @@ public class CheckRegion : MonoBehaviour
 {
     [SerializeField] private Region _map;
     [SerializeField] private RightMenu _rightMenu;
+    [SerializeField] private Canvas _regionStats;
 
     private Camera _camera;
     private Region _chekedRegion;
@@ -43,6 +44,8 @@ public class CheckRegion : MonoBehaviour
                         _isCheckedAnyRegion = true;
 
                         _rightMenu.Change(_isCheckedAnyRegion);
+
+                        _regionStats.gameObject.SetActive(true);
                     }
                 }
             }
@@ -50,10 +53,13 @@ public class CheckRegion : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
+            if (_chekedRegion != null)
+                _chekedRegion.Uncheck();
+
             FocusOn(_map, 5f, 1f);
-            _chekedRegion.Uncheck();
             _isCheckedAnyRegion = false;
             _rightMenu.Change(_isCheckedAnyRegion);
+            _regionStats.gameObject.SetActive(false);
         }
     }
 
