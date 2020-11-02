@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas))]
+
 public class RegionStats : MonoBehaviour
 {
     private Canvas _stats;
