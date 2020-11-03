@@ -12,6 +12,7 @@ public abstract class People : MonoBehaviour
     [SerializeField] private int _population;
 
     private int _looseCount;
+
     private UnityEvent OnLooseAllPeople;
 
     public int Population => _population;
@@ -30,10 +31,12 @@ public abstract class People : MonoBehaviour
         {
             int prevPopulation = _population;
 
-            _population -= damage;
+            if (damage >= _armor)
+            {
+                _population -= damage - _armor;
+            }
 
             _looseCount = prevPopulation - _population;
-
         }
         else
         {
@@ -48,8 +51,20 @@ public abstract class People : MonoBehaviour
         if(_population < _populationSlider.Population)
         {
             _population += count;
+            GetMoney(count);
         }
         else
             return;
+    }
+
+    public void AddStats(int addedAttack, int addedArmor)
+    {
+        _attack += addedAttack;
+        _armor += addedArmor;
+    }
+
+    private void GetMoney(int count)
+    {
+        _money += count;
     }
 }

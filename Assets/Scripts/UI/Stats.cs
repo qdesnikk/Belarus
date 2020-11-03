@@ -16,12 +16,15 @@ public class Stats : Window
 
     private void Update()
     {
-        _playerPopulation.text = _player.Population.ToString();
-        _playerAttack.text = _player.Attack.ToString();
-        _playerArmor.text = _player.Armor.ToString();
+        if (this.gameObject.activeSelf)
+        {
+            _playerPopulation.text = _player.Population.ToString();
+            _playerAttack.text = _player.Attack.ToString();
+            _playerArmor.text = _player.Armor.ToString();
 
-        _enemyPopulation.text = _enemy.Population.ToString();
-        _enemyAttack.text = _enemy.Attack.ToString();
-        _enemyArmor.text = _enemy.Armor.ToString();
+            _enemyPopulation.text = _enemy.Population.ToString();
+            _enemyAttack.text = _enemy.Attack.ToString();
+            _enemyArmor.text = _enemy.Armor.ToString();
+        }
     }
 }

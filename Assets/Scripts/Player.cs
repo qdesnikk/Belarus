@@ -5,5 +5,5 @@ using UnityEngine.Events;
 
 public class Player : People
 {
-    
+
 }
