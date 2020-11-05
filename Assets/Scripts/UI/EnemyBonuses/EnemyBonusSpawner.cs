@@ -12,7 +12,6 @@ public class EnemyBonusSpawner : MonoBehaviour
 
     private Random _random;
 
-
     private void Awake()
     {
         _random = new Random();

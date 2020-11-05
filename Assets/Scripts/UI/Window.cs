@@ -4,8 +4,5 @@ using UnityEngine;
 
 public abstract class Window : MonoBehaviour
 {
-    public void Close()
-    {
-        this.gameObject.SetActive(false);
-    }
+    
 }

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public abstract class People : MonoBehaviour
 {
     [SerializeField] private PopulationSlider _populationSlider;
+    [SerializeField] private string _name;
     [SerializeField] private int _money;
     [SerializeField] private int _attack;
     [SerializeField] private int _armor;
@@ -13,9 +14,10 @@ public abstract class People : MonoBehaviour
 
     private int _looseCount;
 
-    private UnityEvent OnLooseAllPeople;
+    public event UnityAction<People> LooseAllPeople;
 
     public int Population => _population;
+    public string Name => _name;
     public int Money => _money;
     public int Attack => _attack;
     public int Armor => _armor;
@@ -40,7 +42,7 @@ public abstract class People : MonoBehaviour
         }
         else
         {
-            OnLooseAllPeople?.Invoke();
+            LooseAllPeople?.Invoke(this);
         }
 
         return _looseCount;
@@ -57,14 +59,26 @@ public abstract class People : MonoBehaviour
             return;
     }
 
-    public void AddStats(int addedAttack, int addedArmor)
+    public void AddStats(int addAttack, int addArmor)
     {
-        _attack += addedAttack;
-        _armor += addedArmor;
+        _attack += addAttack;
+        _armor += addArmor;
     }
 
     private void GetMoney(int count)
     {
         _money += count;
+    }
+
+    public void TryBuySkill(Skill skill)
+    {
+        if(_money >= skill.Price)
+        {
+            _money -= skill.Price;
+
+            AddStats(skill.AddAttack, skill.AddArmor);
+
+            skill.ChangeColor(Color.green);
+        }
     }
 }
