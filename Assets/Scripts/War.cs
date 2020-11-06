@@ -13,6 +13,7 @@ public class War : MonoBehaviour
     private void OnEnable()
     {
         _player.LooseAllPeople += GameOver;
+        _enemy.LooseAllPeople += GameOver;
     }
 
     private void Start()
@@ -23,6 +24,7 @@ public class War : MonoBehaviour
     private void OnDisable()
     {
         _player.LooseAllPeople -= GameOver;
+        _enemy.LooseAllPeople -= GameOver;
     }
 
     private void TryToAttack()
@@ -39,7 +41,6 @@ public class War : MonoBehaviour
         _gameOverWindow.gameObject.SetActive(true);
         _gameOverWindow.GetLoosePlayer(people);
         Time.timeScale = 0;
-        
     }
 
     IEnumerator AttackTimer()

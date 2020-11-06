@@ -47,8 +47,7 @@ public class Skill : MonoBehaviour
     {
         if (!_isBuyed)
         {
-            _player.TryBuySkill(this);
-            _isBuyed = true;
+            _isBuyed = _player.TryBuySkill(this);
         }
     }
 }

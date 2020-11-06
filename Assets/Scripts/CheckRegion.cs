@@ -12,8 +12,6 @@ public class CheckRegion : MonoBehaviour
     private Camera _camera;
     private Region _chekedRegion;
 
-    private bool _isCheckedAnyRegion;
-
     private void Awake()
     {
         _camera = GetComponent<Camera>();
@@ -30,17 +28,13 @@ public class CheckRegion : MonoBehaviour
             {
                 if (hit.collider.TryGetComponent(out Region region))
                 {
-                    if(_chekedRegion != region)
-                    {
-                        if(_chekedRegion != null)
-                            _chekedRegion.Uncheck();
+                    if(_chekedRegion != null)
+                        _chekedRegion.Uncheck();
 
-                        FocusOn(region, 3f, 1f);
-                        region.Check();
+                    FocusOn(region, 3f, 1f);
+                    region.Check();
 
-                        _chekedRegion = region;
-                        _isCheckedAnyRegion = true;
-                    }
+                    _chekedRegion = region;
                 }
             }
         }
@@ -51,7 +45,6 @@ public class CheckRegion : MonoBehaviour
                 _chekedRegion.Uncheck();
 
             FocusOn(_map, 5f, 1f);
-            _isCheckedAnyRegion = false;
         }
     }
 

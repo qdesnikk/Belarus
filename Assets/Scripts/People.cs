@@ -70,15 +70,19 @@ public abstract class People : MonoBehaviour
         _money += count;
     }
 
-    public void TryBuySkill(Skill skill)
+    public bool TryBuySkill(Skill skill)
     {
-        if(_money >= skill.Price)
+        if (_money >= skill.Price)
         {
             _money -= skill.Price;
 
             AddStats(skill.AddAttack, skill.AddArmor);
 
             skill.ChangeColor(Color.green);
+
+            return true;
         }
+        else
+            return false;
     }
 }
