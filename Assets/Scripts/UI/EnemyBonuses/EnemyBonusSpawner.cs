@@ -30,7 +30,6 @@ public class EnemyBonusSpawner : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        //Instantiate(_bonuses[Random.Range(0, _bonuses.Count)], _canvas);
         _bonuses[Random.Range(0, _bonuses.Count)].gameObject.SetActive(true);
 
         StartCoroutine(Timer());

@@ -48,15 +48,17 @@ public abstract class People : MonoBehaviour
         return _looseCount;
     }
 
-    public void GetPeople(int count)
+    public void AddPeople(int count)
     {
         if(_population < _populationSlider.Population)
         {
             _population += count;
-            GetMoney(count);
+            TakeMoney(count);
         }
         else
+        {
             return;
+        }
     }
 
     public void AddStats(int addAttack, int addArmor)
@@ -65,7 +67,7 @@ public abstract class People : MonoBehaviour
         _armor += addArmor;
     }
 
-    private void GetMoney(int count)
+    private void TakeMoney(int count)
     {
         _money += count;
     }
@@ -83,6 +85,8 @@ public abstract class People : MonoBehaviour
             return true;
         }
         else
+        {
             return false;
+        }
     }
 }

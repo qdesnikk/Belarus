@@ -18,10 +18,10 @@ public class MoveGroups : MonoBehaviour
     {
         for (int i = 0; i < _points.Count; i++)
         {
-            var b4bGroup = Instantiate(_playerPrefab, _points[i]);
-            _groups.Add(b4bGroup);
-            var belGroup = Instantiate(_enemyPrefab, _points[i]);
-            _groups.Add(belGroup);
+            var playerGroup = Instantiate(_playerPrefab, _points[i]);
+            _groups.Add(playerGroup);
+            var enemyGroup = Instantiate(_enemyPrefab, _points[i]);
+            _groups.Add(enemyGroup);
         }
 
         StartCoroutine(RandomMove());

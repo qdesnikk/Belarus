@@ -30,10 +30,10 @@ public class War : MonoBehaviour
     private void TryToAttack()
     {
         _looseCount = _player.LoosePeople(_enemy.Attack);
-        _enemy.GetPeople(_looseCount);
+        _enemy.AddPeople(_looseCount);
 
         _looseCount = _enemy.LoosePeople(_player.Attack);
-        _player.GetPeople(_looseCount);
+        _player.AddPeople(_looseCount);
     }
 
     private void GameOver(People people)
@@ -52,6 +52,4 @@ public class War : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
-
-
 }

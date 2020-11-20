@@ -11,10 +11,16 @@ public class CheckRegion : MonoBehaviour
 
     private Camera _camera;
     private Region _chekedRegion;
+    private float _mapOrthoSize;
+    private float _regionOrthoSize;
+    private float _focusDuration;
 
     private void Awake()
     {
         _camera = GetComponent<Camera>();
+        _mapOrthoSize = 5f;
+        _regionOrthoSize = 3f;
+        _focusDuration = 1f;
     }
 
     private void Update()
@@ -31,7 +37,7 @@ public class CheckRegion : MonoBehaviour
                     if(_chekedRegion != null)
                         _chekedRegion.Uncheck();
 
-                    FocusOn(region, 3f, 1f);
+                    FocusOn(region, _regionOrthoSize);
                     region.Check();
 
                     _chekedRegion = region;
@@ -42,15 +48,17 @@ public class CheckRegion : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             if (_chekedRegion != null)
+            {
                 _chekedRegion.Uncheck();
+            }
 
-            FocusOn(_map, 5f, 1f);
+            FocusOn(_map, _mapOrthoSize);
         }
     }
 
-    private void FocusOn(Region region, float orthoSize, float duration)
+    private void FocusOn(Region region, float orthoSize)
     {
-        _camera.transform.DOMove(region.transform.position + new Vector3(0, 0, _camera.transform.position.z), duration);
-        _camera.DOOrthoSize(orthoSize, duration);
+        _camera.transform.DOMove(region.transform.position + new Vector3(0, 0, _camera.transform.position.z), _focusDuration);
+        _camera.DOOrthoSize(orthoSize, _focusDuration);
     }
 }
