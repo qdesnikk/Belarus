@@ -17,6 +17,11 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void StartGame()
+    {
+
+    }
+
     public void Exit()
     {
         Application.Quit();
